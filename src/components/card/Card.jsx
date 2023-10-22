@@ -115,7 +115,11 @@ function ExpandedCard({param, setExpanded}){
       layoutId='expandableCard'
     >
 
-      <div>
+      <div
+        style={{
+          alignSelf: "flex-end", cursor:'pointer', color: "#fff"
+        }}
+      >
         <UilTimes onClick={setExpanded} />
       </div>
 
