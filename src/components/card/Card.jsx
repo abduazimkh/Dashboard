@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Card.css'
-import { AnimateSharedLayout } from 'framer-motion'
+import { motion, AnimateSharedLayout } from 'framer-motion'
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { UilTimes } from '@iconscout/react-unicons';
@@ -29,12 +29,14 @@ function CompactCard ({param, setExpanded}){
   const Png = param.png
 
   return (
-    <div className="CompactCard"
+    <motion.div
+    className='CompactCard'
       style={{
         background : param.color.backGround,
         boxShadow : param.color.boxShadow
       }}
       onClick={setExpanded}
+      layoutId='expandableCard'
     >
       <div className="radialBar">
         <CircularProgressbar
@@ -48,7 +50,7 @@ function CompactCard ({param, setExpanded}){
         <span>${param.value}</span>
         <span>Last 24 hours</span>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -92,23 +94,25 @@ function ExpandedCard({param, setExpanded}){
       xaxis: {
         type: "datatime",
         categories: [
-          "2018-09-19T00:00:00.000Z",
-          "2018-09-19T01:30:00.000Z",
-          "2018-09-19T02:30:00.000Z",
-          "2018-09-19T03:30:00.000Z",
-          "2018-09-19T04:30:00.000Z",
-          "2018-09-19T05:30:00.000Z",
+          "2023-10-19T00:00:00.000Z",
+          "2023-10-19T01:30:00.000Z",
+          "2023-10-19T02:30:00.000Z",
+          "2023-10-19T03:30:00.000Z",
+          "2023-10-19T04:30:00.000Z",
+          "2023-10-19T05:30:00.000Z",
         ],
       },
     }
   }
 
   return (
-    <div className="ExpandedCard"
+    <motion.div
+    className='ExpandedCard'
       style={{
         background: param.color.backGround,
         boxShadow: param.color.boxShadow,
       }}
+      layoutId='expandableCard'
     >
 
       <div>
@@ -122,11 +126,11 @@ function ExpandedCard({param, setExpanded}){
       </span>
 
       <div className="chartContainer">
-        <Chart series={param.series} type='area' options={DataTransfer.options} />
+        <Chart series={param.series} type='area' options={data.options} />
       </div>
         <span>Last 24 hours</span>
 
-    </div>
+    </motion.div>
   )
 }
 
